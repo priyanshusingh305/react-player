@@ -4,8 +4,7 @@ function chillHop() {
   return [
     {
       name: "The End",
-      cover:
-        "https://chillhop.com/wp-content/uploads/2020/10/efaa848553d09b4d9fc0752844456e41b34de276-1024x1024.jpg",
+      cover:"https://chillhop.com/wp-content/uploads/2020/10/efaa848553d09b4d9fc0752844456e41b34de276-1024x1024.jpg",
       artist: "Philanthrope, Fujitsu",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=1859",
       color: ["#7256AF", "#5CA3EF"],
@@ -119,6 +118,16 @@ function chillHop() {
       artist: "Aso, Middle School, Aviino",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=10074",
       color: ["#205950", "#2ab3bf"],
+      id: uuidv4(),
+      active: false,
+    },
+    {
+      name: "Santiago",
+      cover:
+        "https://chillhop.com/wp-content/uploads/2022/01/1abf44fbb1364ca8435a8bbf4c5750a80947128f-1024x1024.jpg",
+      artist: "Psalm Trees, Moods",
+      audio: "https://mp3.chillhop.com/serve.php/?mp3=30202",
+      color: ["#A2A3A8", "#AF8F7B"],
       id: uuidv4(),
       active: false,
     },
