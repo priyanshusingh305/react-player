@@ -19,6 +19,11 @@ const Player =({currentSong,setIsPlaying,isPlaying})=>{
             setIcon(faPause)       
         }
     }
+    const dragHandler=(e)=>{
+        console.log(e.target.value)
+        audioRef.current.currentTime=e.target.value;
+        setSongInfo({...songInfo,currentTime:e.target.value} )
+    }
 // state
 // const [songInfo, setsongInfo] = useState({
 //     currentTime:null,
@@ -44,7 +49,12 @@ duration:null,
         <div className='player'>
         <div className='time-control'>
         <p>{getTime(songInfo.currentTime)}</p>
-        <input type="range"/>
+        <input 
+        onChange={dragHandler}
+        min={0}
+        value={songInfo.currentTime}
+         max={songInfo.duration}
+         type="range"/>
         <p>{getTime(songInfo.duration)}</p>
         </div>
         <div className='play-control'>
