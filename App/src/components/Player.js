@@ -20,7 +20,7 @@ const Player =({currentSong,setIsPlaying,isPlaying})=>{
         }
     }
     const dragHandler=(e)=>{
-        console.log(e.target.value)
+        // console.log(e.target.value)
         audioRef.current.currentTime=e.target.value;
         setSongInfo({...songInfo,currentTime:e.target.value} )
     }
@@ -32,8 +32,8 @@ const Player =({currentSong,setIsPlaying,isPlaying})=>{
 const timeUpdateHandler=(e)=>{
 const current=e.target.currentTime;
 const duration=e.target.duration;
-console.log(current);
-console.log(duration);
+// console.log(current);
+// console.log(duration);
 setSongInfo({...songInfo,currentTime:current,duration:duration})
 }
 const getTime=(time)=>{
@@ -42,8 +42,8 @@ const getTime=(time)=>{
     );
 };
 const[songInfo,setSongInfo]=useState({
-currentTime:null,
-duration:null,
+currentTime:0,
+duration:0,
 });
     return(
         <div className='player'>
