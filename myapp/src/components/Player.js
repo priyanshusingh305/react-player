@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay,faAngleLeft,faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
 const Player =({currentSong,setIsPlaying,isPlaying, audioRef,setSongInfo,songInfo})=>{
     const [Icon,setIcon]=useState(faPlay)
-     // event handler
+    // event handler
     const playSongHandler=()=>{
         // console.log(audioRef.current)
         if(isPlaying){
@@ -22,29 +22,30 @@ const Player =({currentSong,setIsPlaying,isPlaying, audioRef,setSongInfo,songInf
         audioRef.current.currentTime=e.target.value;
         setSongInfo({...songInfo,currentTime:e.target.value} )
     }
-// state
-// const [songInfo, setsongInfo] = useState({
-//     currentTime:null,
-//     duration:null,
-// });
+    // state
+    // const [songInfo, setsongInfo] = useState({
+        //     currentTime:null,
+        //     duration:null,
+        // });
+        
+        const getTime=(time)=>{
+            return(
+                Math.floor( time /60)+":"+("0"+Math.floor(time%60)).slice(-2)  
+                );
 
-const getTime=(time)=>{
-    return(
-       Math.floor( time /60)+":"+("0"+Math.floor(time%60)).slice(-2)  
-    );
-};
-
-    return(
-        <div className='player'>
+            };
+            
+            return(
+                <div className='player'>
         <div className='time-control'>
         <p>{getTime(songInfo.currentTime)}</p>
         <input 
         onChange={dragHandler}
         min={0}
         value={songInfo.currentTime}
-         max={songInfo.duration}
+         max={songInfo.duration || 0}
          type="range"/>
-        <p>{getTime(songInfo.duration)}</p>
+        <p>{getTime(songInfo.duration || 0)}</p>
         </div>
         <div className='play-control'>
         <FontAwesomeIcon className='skip-back' size='2x' icon={faAngleLeft}/>
