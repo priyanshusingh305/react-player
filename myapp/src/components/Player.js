@@ -1,29 +1,29 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay,faAngleLeft,faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
 const Player =({currentSong,setIsPlaying,isPlaying, audioRef,setSongInfo,songInfo,songs, setCurrentSong,setSongs})=>{
     // use effect
-    useEffect(()=>{
+
+    
+    // event handler
+    const [Icon,setIcon]=useState(faPlay)
+  
+    const activeLibraryHandler=(nextPrev)=>{
         const newSongs=songs.map((song)=>{
             if(song.id===currentSong.id){
                 return{
                     ...song,
                     active:true,
                 }
-            }
-            else{
+            }else{
                 return{
                     ...song,
                     active:false,
                 }
             }
-        });
+        }) 
         setSongs(newSongs);
-    
-    },[currentSong]);
-    
-    // event handler
-    const [Icon,setIcon]=useState(faPlay)
+    }
     
     const playSongHandler=()=>{
         // console.log(audioRef.current)
@@ -59,14 +59,19 @@ const Player =({currentSong,setIsPlaying,isPlaying, audioRef,setSongInfo,songInf
                 let currentIndex=songs.findIndex((song)=>song.id===currentSong.id);
                 if(direction==='skip-forward'){
                  await  setCurrentSong(songs[(currentIndex+1)%songs.length])
+                 activeLibraryHandler(songs[(currentIndex+1)%songs.length])
                 }   
                 if(direction==='skip-back'){
                     if((currentIndex-1)%songs.length===-1){
                        await setCurrentSong(songs[songs.length-1])
+                 activeLibraryHandler(songs[songs.length-1])
+
                 if(isPlaying) audioRef.current.play();
                         return;
                     }
                    await setCurrentSong(songs[(currentIndex-1)%songs.length])
+                   activeLibraryHandler(songs[(currentIndex-1)%songs.length])
+               
                 }
                 if(isPlaying) audioRef.current.play();
             };
