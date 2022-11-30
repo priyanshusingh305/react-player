@@ -22,7 +22,6 @@ const Player =({currentSong,setIsPlaying,isPlaying, audioRef,setSongInfo,songInf
         setSongs(newSongs);
     
     },[currentSong]);
-
     
     // event handler
     const [Icon,setIcon]=useState(faPlay)
@@ -72,17 +71,27 @@ const Player =({currentSong,setIsPlaying,isPlaying, audioRef,setSongInfo,songInf
                 }
                 playAudio(isPlaying,audioRef);
             }
+//Add the styles
+            const trackAnim={
+                transform:`translateX(${songInfo.animationPercentage}%)`
+            }
 
-            return(
+
+
+
+        return(
         <div className='player'>
         <div className='time-control'>
         <p>{getTime(songInfo.currentTime)}</p>
+        <div style={{background:`linear-gradient(to right,${currentSong.color[0]},${currentSong.color[1]})`}} className='track'>
         <input 
         onChange={dragHandler}
         min={0}
         value={songInfo.currentTime}
          max={songInfo.duration || 0}
          type="range"/>
+         <div style={trackAnim} className="animate-track"></div>
+         </div>
         <p>{getTime(songInfo.duration || 0)}</p>
         </div>
         <div className='play-control'>
