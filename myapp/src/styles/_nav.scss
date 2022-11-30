@@ -4,6 +4,7 @@ nav{
     justify-content: space-around;
     align-items: center;
     button{
+        z-index: 1000;
         background: transparent;
         border: none;
         cursor: pointer;
@@ -14,6 +15,17 @@ nav{
             background: rgb(65,65,65);
             color: white;
         }
+    }
+    
+}
+
+@media screen and (max-width: 768px){
+    nav{
+        bottom{
+            z-index: 1000;
+        }
+        
+        
     }
     
 }
