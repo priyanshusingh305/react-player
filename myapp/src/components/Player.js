@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { playAudio } from "../util";
 import { faPlay,faAngleLeft,faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
 const Player =({currentSong,setIsPlaying,isPlaying, audioRef,setSongInfo,songInfo,songs, setCurrentSong,setSongs})=>{
     // use effect
@@ -64,10 +65,12 @@ const Player =({currentSong,setIsPlaying,isPlaying, audioRef,setSongInfo,songInf
                 if(direction==='skip-back'){
                     if((currentIndex-1)%songs.length===-1){
                         setCurrentSong(songs[songs.length-1])
+                        playAudio(isPlaying,audioRef);
                         return;
                     }
                     setCurrentSong(songs[(currentIndex-1)%songs.length])
                 }
+                playAudio(isPlaying,audioRef);
             }
 
             return(
