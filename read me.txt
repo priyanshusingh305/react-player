@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/68714985/npm-install-node-sass4-14-1-error-on-wsl
